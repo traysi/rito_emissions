@@ -630,15 +630,12 @@ $rito_emission_table = array(0, 157081, 157087, 157094, 157101, 157108, 157115, 
 3465414, 3517730, 3573925, 3634619, 3700598, 3772870, 3852763, 3942076, 
 4043330, 4160219, 4298470, 4467676, 4685819, 4993276, 5518876, 0x7fffffff);
 
-$nHeight = $argv[1];
-
-if ($nHeight > 5518876) {
-  // Cheating here for performance reasons.
-  $reward = 10;
-} else {
+$start = 157081;
+while ($start < 1137795) {
   $index = 0;
-  while ($rito_emission_table[$index+1] <= $nHeight) $index++;
+  while ($rito_emission_table[$index+1] <= $start) $index++;
   $reward = 5000-$index;
+  print "$start: $reward\n";
+  $start++;
 }
-print "$reward\n";
 
